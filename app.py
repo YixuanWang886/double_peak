@@ -299,28 +299,6 @@ def main():
             type=['json'],
             help="Upload a JSON file containing rowing force data"
         )
-        
-        # Sample data download
-        if st.button("📥 Download Sample Data"):
-            sample_data = {
-                "strokeForce": {
-                    "left": {"time": [2780, 4310, 5270, 6370, 7450]},
-                    "right": {"time": [2800, 3860, 4870, 5930, 7010]}
-                },
-                "lapForceTime": {
-                    "time": list(range(2780, 8000, 10)),
-                    "left": {"forward": [np.random.normal(50, 20) for _ in range(522)]},
-                    "right": {"forward": [np.random.normal(50, 20) for _ in range(522)]}
-                }
-            }
-            
-            json_str = json.dumps(sample_data, indent=2)
-            st.download_button(
-                label="Download Sample JSON",
-                data=json_str,
-                file_name="sample_data.json",
-                mime="application/json"
-            )
     
     # Load and preprocess data
     df, error = load_and_process_data(uploaded_file)
